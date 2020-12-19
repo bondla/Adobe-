@@ -1,9 +1,6 @@
 const productDOM = document.querySelector(".product__center");
 const cartDOM = document.querySelector(".cart");
 const cartContent = document.querySelector(".cart__centent");
-const openCart = document.querySelector(".cart__icon");
-const closeCart = document.querySelector(".close__cart");
-const overlay = document.querySelector(".cart__overlay");
 const cartTotal = document.querySelector(".cart__total");
 const clearCartBtn = document.querySelector(".clear__cart");
 const itemTotals = document.querySelector(".item__total");
@@ -116,23 +113,10 @@ class UI {
         cartContent.appendChild(div);
     }
 
-    show() {
-        cartDOM.classList.add("show");
-        overlay.classList.add("show");
-    }
-
-    hide() {
-        cartDOM.classList.remove("show");
-        overlay.classList.remove("show");
-    }
-
     setAPP() {
         cart = Storage.getCart();
         this.setItemValues(cart);
         this.populate(cart);
-
-        openCart.addEventListener("click", this.show);
-        closeCart.addEventListener("click", this.hide);
     }
 
     populate(cart) {
