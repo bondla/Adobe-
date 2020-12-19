@@ -13,7 +13,6 @@ class UI {
     displayProducts(products) {
         let results = "";
         products.forEach((item) => {
-            console.log("======", results);
             results += `<!-- Single Product -->
       <div class="product">
 	  
@@ -79,7 +78,8 @@ class UI {
         let itemTotal = 0;
 
         cart.map((item) => {
-            tempTotal += item.discount * item.amount;
+            tempTotal += item.price.display * item.amount;
+			console.log(item.price.display,"===========item.discount==========",item.amount);
             itemTotal += item.amount;
         });
         cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
@@ -93,7 +93,7 @@ class UI {
         div.innerHTML = `<img src=${item.image}>
           <div>
             <h3>${name}</h3>
-            <h3 class="price">$${item.discount}</h3>
+            <h3 class="price">$${item.price.display}</h3>
           </div>
           <div>
             <span class="increase" data-id=${item.id}>+
